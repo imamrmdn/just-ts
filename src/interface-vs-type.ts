@@ -61,10 +61,79 @@ console.log(rule);
 //bisa dipakai ditype tetapi tidak bisa dipakai diinterface
 //menggabungkan 2 type
 
+type Warning1 = {
+    list: string,
+    rules: string,
+}
+
+type Warning2 = {
+    list: string,
+    rules: string,
+    date: number
+}
+
+//intersection
+type IntersectionWarning = Warning2 & Warning1 //<<-- dipakai 2" ny
+
+//union
+type UnionWarning = Warning1 | Warning2 // <-- dipakai salah satu
+
+
+const warn: IntersectionWarning = {
+    list: '',
+    rules: '',
+    date: 98
+}
+
+console.log(warn);
+
 /**
  * Implements
  */
 
+ interface People {
+     name: string,
+     addres: string
+ }
+
+ class Human implements People{
+     name: string
+     addres: string
+
+    constructor(){
+        this.name = 'imron'
+        this.addres = 'jakut'
+    }
+ }
+
+ console.log(new Human().addres);
+ 
+
 /**
  * Extend
  */
+
+ interface Before{
+     name: string,
+     status: boolean
+ }
+
+ interface After extends Before {
+     city: string
+ }
+
+ class Country implements After{
+
+    name: string
+    status: boolean
+    city: string
+
+    constructor(){
+        this.name = 'indo'
+        this.status = true
+        this.city = 'jakarta'
+    }
+ }
+
+ console.log(new Country().status);
+ 
